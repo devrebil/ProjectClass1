@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    reset.css 불러오기-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">-->
+<!--    icon 불러오기-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+<!--    ROBOTO, Lobser 폰트 불러오기-->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<!--    외부 css 불러오기-->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="todolist">
+        <div class="main__title">
+            <h1>To Do List</h1>
+        </div>
+
+    <div class="input__section" id="form_sec">
+        <form>
+            <div>
+                <input type="text" class="item" autofocus="true" placeholder="할일 작성">
+            </div>
+            <div>
+                <button type="button" class="input__button"><i class="fas fa-plus-circle"></i></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="item__list"></div>
+    </div>
+
+
+<!--    외부 Js파일 불러오기 (defer는 브라우저에게 document가 parse된 이후에 script가 실행되어야 한다고 알려주는 역할을 한다고 함.)-->
+    <script src="/js/main.js" defer></script>
+
+</body>
+</html>
