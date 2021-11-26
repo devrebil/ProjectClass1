@@ -1,44 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<!--    reset.css 불러오기-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">-->
-<!--    icon 불러오기-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-<!--    ROBOTO, Lobser 폰트 불러오기-->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-<!--    외부 css 불러오기-->
-    <link rel="stylesheet" href="/css/main.css">
-
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="todolist">
-        <div class="main__title">
+    <div class="top_cal">
+    <table class="calendar">
+        <div class="calendar__banner--month"><h1>11월</h1></div>
+        <thead>
+            <tr>
+                <th class="calendar__day__header">Sun</th>
+                <th class="calendar__day__header">Mon</th>
+                <th class="calendar__day__header">Tues</th>
+                <th class="calendar__day__header">Wed</th>
+                <th class="calendar__day__header">Thu</th>
+                <th class="calendar__day__header">Fri</th>
+                <th class="calendar__day__header">Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="calendar__day__cell"></td>
+                <td class="calendar__day__cell">1</td>
+                <td class="calendar__day__cell">2</td>
+                <td class="calendar__day__cell">3</td>
+                <td class="calendar__day__cell">4</td>
+                <td class="calendar__day__cell">5</td>
+                <td class="calendar__day__cell">6</td>
+            </tr>
+            <tr>
+                <td class="calendar__day__cell">7</td>
+                <td class="calendar__day__cell">8</td>
+                <td class="calendar__day__cell">9</td>
+                <td class="calendar__day__cell">10</td>
+                <td class="calendar__day__cell">11</td>
+                <td class="calendar__day__cell">12</td>
+                <td class="calendar__day__cell">13</td>
+            </tr>
+            <tr>
+                <td class="calendar__day__cell">14</td>
+                <td class="calendar__day__cell">15</td>
+                <td class="calendar__day__cell">16</td>
+                <td class="calendar__day__cell">17</td>
+                <td class="calendar__day__cell">18</td>
+                <td class="calendar__day__cell">19</td>
+                <td class="calendar__day__cell">20</td>
+            </tr>
+            <tr>
+                <td class="calendar__day__cell">21</td>
+                <td class="calendar__day__cell">22</td>
+                <td class="calendar__day__cell">23</td>
+                <td class="calendar__day__cell">24</td>
+                <td class="calendar__day__cell">25</td>
+                <td class="calendar__day__cell">26</td>
+                <td class="calendar__day__cell">27</td>
+            </tr>
+            <tr>
+                <td class="calendar__day__cell">28</td>
+                <td class="calendar__day__cell">29</td>
+                <td class="calendar__day__cell">30</td>
+                <td class="calendar__day__cell">31</td>
+                <td class="calendar__day__cell"></td>
+                <td class="calendar__day__cell"></td>
+                <td class="calendar__day__cell"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="container">
+        <div class="title__container">
             <h1>To Do List</h1>
         </div>
+        <input type="text" class="txtb" placeholder="할일을 적으세요.">
+        <div class="notcomp">
+            <h3><span style="font-size: 16px;"><i class="far fa-calendar"></i></span>&nbsp못했어요</h3>
+        </div>
+        <div class="comp">
+            <h3><span style="font-size: 16px;"><i class="far fa-calendar-check"></i></span>&nbsp끝냈어요</h3>
 
-    <div class="input__section" id="form_sec">
-        <form>
-            <div>
-                <input type="text" class="item" autofocus="true" placeholder="할일 작성">
-            </div>
-            <div>
-                <button type="button" class="input__button"><i class="fas fa-plus-circle"></i></button>
-            </div>
-        </form>
+        </div>
     </div>
 
-    <div class="item__list"></div>
-    </div>
+    <script type="text/javascript">
+        $(".txtb").on("keyup",function(e){
+            // 13의 뜻은 엔터 버튼
+            if(e.keyCode == 13 && $(".txtb").val() != "")
+            {
+                var task = $("<div class='task'></div>").text($(".txtb").val()) //글을 적으면 미완료 창으로 가는것
+                var del = $("<i class='fas fa-trash-alt'></i>").click(function(){
+                    var p = $(this).parent();
+                    p.fadeOut(function(){
+                        p.remove();
+                    });                
+                });
 
+                var check = $("<i class='fas fa-check'></i>").click(function(){ //<i class='fas fa-check'></i> 체크 아이콘을 클릭하면 *주의 ""가 아니라 ''를 써야함
+                    var p = $(this).parent();  // 기능을 실행해라
+                    p.fadeOut(function(){
+                        $(".comp").append(p);   
+                        p.fadeIn();
+                    });
+                    $(this).remove();    
+                });
 
-<!--    외부 Js파일 불러오기 (defer는 브라우저에게 document가 parse된 이후에 script가 실행되어야 한다고 알려주는 역할을 한다고 함.)-->
-    <script src="/js/main.js" defer></script>
-
+                task.append(del,check);
+                $(".notcomp").append(task); //글을 적으면 미완료 창으로 가는것
+                // 지우는 인풋
+                $(".txtb").val("")
+            }
+            });
+    </script>
 </body>
 </html>

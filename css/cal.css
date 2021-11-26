@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+.top_cal {
+  margin: auto;
+  width: 600px;
+  border: 8px outset #8CA6DB;
+  border-radius: 10px;
+  background-image: linear-gradient(150deg, #B993D6, #8CA6DB);
+  margin-top: 10px;
+}
+
+tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.top--box {
+  /* background-color: #575454; */
+  color: #4E4F4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat";
+  font-weight: 700;
+  min-height: 400px;
+  padding-top: 20px;
+}
+
+main {
+  background-color: #F6E9DC;
+  box-shadow: 0px 0px 0px 2px #575454, 10px 10px 20px 10px rgba(78, 79, 74, 0.5);
+  flex-basis: 600px;
+}
+
+/* 달력 부분 */
+.calendar {
+  display: table;
+  table-layout: fixed;
+  border: none;
+  width: 100%;
+}
+
+.calendar__day__header,
+.calendar__day__cell {
+  border: 2px solid #575454;
+  text-align: center;
+  width: 100%/7;
+  vertical-align: middle;
+}
+
+/* 요일 마우스로 가르키면 */
+.calendar__day__cell:hover {
+  cursor: pointer;
+  color: #e66053;
+  background-color: #94DAFF;
+}
+
+
+/* 일요일 부분 */
+.calendar__day__header:first-child,
+.calendar__day__cell:first-child {
+  border-left: none;
+  color: red;
+}
+
+/* 토요일 부분 */
+.calendar__day__header:last-child,
+.calendar__day__cell:last-child {
+  border-right: none;
+  color: blue;
+}
+
+/* 달력 안 설정부분 */
+.calendar__day__header,
+.calendar__day__cell {
+  padding: 0.75rem 0 1.5rem;
+  border: .5px outset;
+  box-shadow: 3px 3px 10px #000808;
+}
+
+.calendar__banner--month {
+  /* border: 2px solid #575454; 달력 태두리 */
+  /* border-bottom: none; */
+  text-align: center;
+  /* padding: 0.75rem; */
+}
+.calendar__banner--month h1 {
+  /* background-color: #4E4F4A; */
+  color: #292119;
+  display: flex;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+}
+
+.calendar__day__header {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.calendar__day__cell {
+  font-size: 20px;
+  position: relative;
+}
+
+
+.calendar__day__cell[data-moon-phase] {
+  background-color: #e66053;
+  color: #4E4F4A;
+}
+.calendar__day__cell[data-moon-phase]:after {
+  content: attr(data-moon-phase);
+  color: #F6E9DC;
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;
+  text-transform: uppercase;
+}
+
+.calendar__day__cell[data-bank-holiday] {
+  background-color: #4E4F4A;
+  border-color: #4E4F4A;
+  border-bottom: none;
+  color: #F6E9DC;
+}
+.calendar__day__cell[data-bank-holiday]:after {
+  content: attr(data-bank-holiday);
+  color: #F6E9DC;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;
+  text-transform: uppercase;
+}
